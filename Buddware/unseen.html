@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unseen Massacure | Buddware</title>
+
+    <style>
+        @font-face {
+            font-family: "Press Start 2P";
+            src: url("press-start-2p.ttf") format("truetype");
+        }
+
+        :root {
+            --bg: #100b18;
+            --panel: #21132f;
+            --panel-dark: #170e22;
+            --purple: #8d39ce;
+            --bright-purple: #d7a5ff;
+            --pink: #ff70d4;
+            --text: #f4eaff;
+            --muted: #bba8cc;
+            --border: #6937a0;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            color: var(--text);
+            background: var(--bg);
+            font-family: "Press Start 2P", monospace;
+            font-size: 10px;
+            line-height: 1.9;
+            background-image:
+                linear-gradient(rgba(160, 80, 255, 0.035) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(160, 80, 255, 0.035) 1px, transparent 1px);
+            background-size: 4px 4px;
+        }
+
+        a {
+            color: var(--bright-purple);
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: white;
+            text-shadow: 0 0 8px var(--pink);
+        }
+
+        .wrap {
+            width: min(1050px, 94%);
+            margin: 24px auto;
+        }
+
+        .topbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+            padding: 16px 20px;
+            margin-bottom: 14px;
+            background: #2d1744;
+            border: 2px solid var(--purple);
+            box-shadow: 0 0 18px #a64dff33;
+        }
+
+        .logo {
+            margin: 0;
+            color: white;
+            font-size: 15px;
+            text-shadow: 3px 3px #6e22a8;
+        }
+
+        .logo span {
+            color: var(--pink);
+        }
+
+        .back-link {
+            font-size: 8px;
+        }
+
+        .game-hero {
+            position: relative;
+            overflow: hidden;
+            padding: 24px;
+            background:
+                linear-gradient(90deg, #170e22 0%, #170e22dd 60%, #170e2280 100%),
+                var(--panel-dark);
+            border: 2px solid #9b4bce;
+            box-shadow: 0 0 22px #a64dff22;
+        }
+
+        .game-hero::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            opacity: 0.12;
+            background: repeating-linear-gradient(
+                to bottom,
+                transparent 0px,
+                transparent 3px,
+                #d7a5ff 4px
+            );
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .eyebrow {
+            color: var(--pink);
+            font-size: 8px;
+        }
+
+        h1 {
+            max-width: 750px;
+            margin: 14px 0;
+            color: white;
+            font-size: clamp(16px, 3vw, 28px);
+            line-height: 1.7;
+            overflow-wrap: anywhere;
+            text-shadow: 3px 3px #6e22a8;
+        }
+
+        .subtitle {
+            max-width: 650px;
+            color: var(--muted);
+        }
+
+        .cover {
+            display: block;
+            width: min(100%, 700px);
+            height: auto;
+            max-height: none;
+            margin: 22px auto 0;
+            image-rendering: pixelated;
+            object-fit: contain;
+            border: 2px solid var(--border);
+            background: #0b0710;
+        }
+
+        .status {
+            display: inline-block;
+            padding: 5px 8px;
+            margin-top: 12px;
+            color: var(--pink);
+            border: 1px solid #853c9d;
+            font-size: 8px;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) 250px;
+            gap: 14px;
+            margin-top: 14px;
+        }
+
+        .panel {
+            min-width: 0;
+            padding: 20px;
+            background: var(--panel);
+            border: 2px solid var(--border);
+        }
+
+        .panel h2 {
+            margin: 0 0 14px;
+            padding-bottom: 9px;
+            color: var(--bright-purple);
+            font-size: 11px;
+            border-bottom: 1px solid var(--border);
+            text-shadow: 2px 2px #6e22a8;
+        }
+
+        .panel p {
+            color: var(--muted);
+        }
+
+        .info-row {
+            padding: 9px 0;
+            border-bottom: 1px dashed #6937a0;
+        }
+
+        .info-row:last-child {
+            border-bottom: none;
+        }
+
+        .info-label {
+            display: block;
+            margin-bottom: 5px;
+            color: var(--pink);
+            font-size: 8px;
+        }
+
+        .info-value {
+            color: var(--text);
+            font-size: 9px;
+            overflow-wrap: anywhere;
+        }
+
+        .button {
+            display: inline-block;
+            margin-top: 12px;
+            padding: 10px 12px;
+            color: white;
+            background: var(--purple);
+            border: 2px solid var(--bright-purple);
+            box-shadow: 3px 3px #45176a;
+            font-size: 8px;
+        }
+
+        .button:hover {
+            color: white;
+            background: #b45aff;
+            text-shadow: none;
+        }
+
+        .warning {
+            margin-top: 14px;
+            padding: 14px;
+            color: #e8d6f5;
+            background: #170e22;
+            border-left: 4px solid var(--pink);
+            font-size: 8px;
+        }
+
+        footer {
+            margin-top: 14px;
+            padding: 14px;
+            text-align: center;
+            color: var(--muted);
+            background: #1a1025;
+            border: 2px solid var(--border);
+            font-size: 8px;
+        }
+
+        @media (max-width: 750px) {
+            .content-grid {
+                grid-template-columns: minmax(0, 1fr);
+            }
+
+            .wrap {
+                margin: 12px auto;
+            }
+
+            .game-hero,
+            .panel {
+                padding: 15px;
+            }
+
+            .topbar {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+
+        <header class="topbar">
+            <p class="logo">BUDD<span>WARE</span></p>
+            <a class="back-link" href="index.html">&lt; BACK TO BUDDWARE</a>
+        </header>
+
+        <section class="game-hero">
+            <div class="hero-content">
+                <div class="eyebrow">A BUDDWARE ORIGINAL</div>
+                <h1>UNSEEN MASSACURE</h1>
+                <p class="subtitle">
+                    Ashwood is almost empty. Something is wrong—and not
+                    everyone sees the town the same way.
+                </p>
+
+                <span class="status">IN DEVELOPMENT</span>
+
+                <img
+                    class="cover"
+                    src="unseen-cover.png"
+                    alt="Unseen Massacure cover artwork"
+                    onerror="this.style.display='none'">
+            </div>
+        </section>
+
+        <div class="content-grid">
+
+            <main class="panel">
+                <h2>ABOUT THE GAME</h2>
+
+                <p>
+                    Unseen Massacure is a retro horror game set in Ashwood,
+                    a town where people have been leaving and the truth is
+                    harder to understand than it first appears.
+                </p>
+
+                <p>
+                    Follow different characters as their stories unfold.
+                    Explore, uncover secrets, and discover what Ashwood
+                    has become.
+                </p>
+
+                <div class="warning">
+                    This game is a work in progress. Story details, visuals,
+                    and gameplay may change during development.
+                </div>
+
+                <h2 style="margin-top: 24px;">FEATURES</h2>
+                <p>• Retro-inspired visuals</p>
+                <p>• Story-focused horror</p>
+                <p>• Explore the town of Ashwood</p>
+                <p>• Multiple character perspectives</p>
+            </main>
+
+            <aside class="panel">
+                <h2>GAME INFO</h2>
+
+                <div class="info-row">
+                    <span class="info-label">DEVELOPER</span>
+                    <span class="info-value">Buddware</span>
+                </div>
+
+                <div class="info-row">
+                    <span class="info-label">GENRE</span>
+                    <span class="info-value">Retro Horror</span>
+                </div>
+
+                <div class="info-row">
+                    <span class="info-label">STATUS</span>
+                    <span class="info-value">In Development</span>
+                </div>
+
+                <div class="info-row">
+                    <span class="info-label">ENGINE</span>
+                    <span class="info-value">GameMaker</span>
+                </div>
+
+                <a class="button" href="index.html">BACK TO HOME</a>
+            </aside>
+
+        </div>
+
+        <footer>
+            UNSEEN MASSACURE — A BUDDWARE GAME
+        </footer>
+
+    </div>
+</body>
+</html>

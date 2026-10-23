@@ -1,0 +1,340 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Inspirations | Buddware</title>
+
+    <style>
+        @font-face {
+            font-family: "Press Start 2P";
+            src: url("press-start-2p.ttf") format("truetype");
+        }
+
+        :root {
+            --bg: #100810;
+            --panel: #281331;
+            --purple: #704098;
+            --light-purple: #b99ad5;
+            --text: #eee4f5;
+            --muted: #c2b3cc;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            background: var(--bg);
+            color: var(--text);
+            font-family: "Press Start 2P", monospace;
+            font-size: 9px;
+            line-height: 2;
+        }
+
+        a {
+            color: var(--light-purple);
+            text-decoration: underline;
+        }
+
+        a:hover {
+            color: white;
+        }
+
+        .wrap {
+            width: min(1000px, 94%);
+            margin: 16px auto;
+        }
+
+        /* Header */
+
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+            padding: 12px;
+            margin-bottom: 10px;
+            background: var(--panel);
+            border: 2px solid var(--purple);
+        }
+
+        .logo {
+            margin: 0;
+            color: white;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        .logo span {
+            color: var(--light-purple);
+        }
+
+        .back {
+            font-size: 8px;
+        }
+
+        /* Intro */
+
+        .intro {
+            padding: 16px;
+            margin-bottom: 10px;
+            background: #170d20;
+            border: 2px solid var(--purple);
+        }
+
+        .eyebrow {
+            color: var(--light-purple);
+            font-size: 7px;
+        }
+
+        h1 {
+            margin: 12px 0;
+            color: white;
+            font-size: clamp(15px, 3vw, 24px);
+            line-height: 1.8;
+            overflow-wrap: anywhere;
+        }
+
+        .intro p {
+            max-width: 750px;
+            color: var(--muted);
+        }
+
+        /* Inspiration cards */
+
+        .inspiration-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 10px;
+        }
+
+        .inspiration {
+            min-width: 0;
+            padding: 14px;
+            background: var(--panel);
+            border: 2px solid var(--purple);
+        }
+
+        .tag {
+            display: inline-block;
+            padding: 3px 6px;
+            margin-bottom: 8px;
+            color: var(--light-purple);
+            background: #190d20;
+            border: 1px solid var(--purple);
+            font-size: 7px;
+        }
+
+        h2 {
+            margin: 0 0 10px;
+            color: var(--light-purple);
+            font-size: 10px;
+            line-height: 1.8;
+            overflow-wrap: anywhere;
+        }
+
+        .inspiration p {
+            color: var(--muted);
+            font-size: 8px;
+        }
+
+        .credit-link {
+            display: inline-block;
+            margin-top: 6px;
+            font-size: 8px;
+        }
+
+        /* Page note and footer */
+
+        .note {
+            margin-top: 10px;
+            padding: 12px;
+            background: var(--panel);
+            border: 2px solid var(--purple);
+            color: var(--muted);
+            font-size: 8px;
+        }
+
+        footer {
+            margin-top: 10px;
+            padding: 10px;
+            text-align: center;
+            color: var(--muted);
+            background: var(--panel);
+            border: 2px solid var(--purple);
+            font-size: 8px;
+        }
+
+        /* Mobile layout */
+
+        @media (max-width: 650px) {
+            .inspiration-grid {
+                grid-template-columns: minmax(0, 1fr);
+            }
+
+            header {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .wrap {
+                margin: 12px auto;
+            }
+
+            .intro,
+            .inspiration {
+                padding: 12px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+
+        <header>
+            <p class="logo">BUDD<span>WARE</span></p>
+            <a class="back" href="index.html">&lt; BACK TO HOME</a>
+        </header>
+
+        <section class="intro">
+            <div class="eyebrow">WHAT INSPIRES US</div>
+
+            <h1>OUR INSPIRATIONS</h1>
+
+            <p>
+                Every game is inspired by something. These are some of the
+                games and creative works that influence Buddware's ideas,
+                art direction, and motivation.
+            </p>
+        </section>
+
+        <main class="inspiration-grid">
+
+            <!-- FAITH: art style -->
+            <article class="inspiration">
+                <span class="tag">ART STYLE</span>
+
+                <h2>FAITH: THE UNHOLY TRINITY</h2>
+
+                <p>
+                    FAITH inspires Buddware's art direction with its stark,
+                    limited pixel art and unsettling retro atmosphere.
+                </p>
+
+                <a class="credit-link"
+                   href="https://store.steampowered.com/app/1179080/FAITH_The_Unholy_Trinity/"
+                   target="_blank"
+                   rel="noopener noreferrer">
+                    VIEW FAITH &gt;
+                </a>
+            </article>
+
+            <!-- Hotline Miami: motivation -->
+            <article class="inspiration">
+                <span class="tag">MOTIVATION</span>
+
+                <h2>HOTLINE MIAMI</h2>
+
+                <p>
+                    Hotline Miami motivates us to keep creating, experiment
+                    with intense game experiences, and bring our own ideas
+                    to life.
+                </p>
+
+                <a class="credit-link"
+                   href="https://store.steampowered.com/app/219150/Hotline_Miami/"
+                   target="_blank"
+                   rel="noopener noreferrer">
+                    VIEW HOTLINE MIAMI &gt;
+                </a>
+            </article>
+
+            <!-- Undertale: motivation -->
+            <article class="inspiration">
+                <span class="tag">MOTIVATION</span>
+
+                <h2>UNDERTALE</h2>
+
+                <p>
+                    Undertale motivates us through its creativity,
+                    memorable characters, emotional storytelling,
+                    and distinctive music.
+                </p>
+
+                <a class="credit-link"
+                   href="https://undertale.com/"
+                   target="_blank"
+                   rel="noopener noreferrer">
+                    OFFICIAL WEBSITE &gt;
+                </a>
+            </article>
+
+            <!-- Deltarune -->
+            <article class="inspiration">
+                <span class="tag">CHARACTERS &amp; WORLD</span>
+
+                <h2>DELTARUNE</h2>
+
+                <p>
+                    Its strange, charming characters and mix of comedy,
+                    mystery, and adventure inspire our creative ideas.
+                </p>
+
+                <a class="credit-link"
+                   href="https://deltarune.com/"
+                   target="_blank"
+                   rel="noopener noreferrer">
+                    OFFICIAL WEBSITE &gt;
+                </a>
+            </article>
+
+            <!-- Pico's School -->
+            <article class="inspiration">
+                <span class="tag">RETRO GAME DESIGN</span>
+
+                <h2>PICO'S SCHOOL</h2>
+
+                <p>
+                    Its distinctive old-school style and memorable setting
+                    inspire our interest in making retro-styled games.
+                </p>
+
+                <a class="credit-link"
+                   href="https://www.newgrounds.com/"
+                   target="_blank"
+                   rel="noopener noreferrer">
+                    NEWGROUNDS &gt;
+                </a>
+            </article>
+
+            <!-- Extra inspiration slot -->
+            <article class="inspiration">
+                <span class="tag">MORE INSPIRATIONS</span>
+
+                <h2>WHAT'S NEXT?</h2>
+
+                <p>
+                    Games, music, art, films, and other creators can all
+                    spark new ideas. This page can grow as Buddware does.
+                </p>
+            </article>
+
+        </main>
+
+        <div class="note">
+            Buddware is an independent project. These works are inspirations,
+            not official partnerships or endorsements.
+        </div>
+
+        <footer>
+            BUDDWARE — MADE BY AN INDIE DEVELOPER
+        </footer>
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,496 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buddware - Indie Games</title>
+
+    <style>
+        @font-face {
+            font-family: "Press Start 2P";
+            src: url("press-start-2p.ttf") format("truetype");
+        }
+
+        :root {
+            --background: #100810;
+            --panel: #281331;
+            --purple: #704098;
+            --light-purple: #b99ad5;
+            --text: #eee4f5;
+            --muted: #c2b3cc;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            background: var(--background);
+            color: var(--text);
+            font-family: "Press Start 2P", monospace;
+            font-size: 9px;
+            line-height: 2;
+        }
+
+        a {
+            color: var(--light-purple);
+            text-decoration: underline;
+        }
+
+        a:hover {
+            color: white;
+        }
+
+        .site-wrap {
+            width: min(1000px, 94%);
+            margin: 16px auto;
+        }
+
+        /* Header */
+
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+            padding: 12px;
+            margin-bottom: 10px;
+            background: var(--panel);
+            border: 2px solid var(--purple);
+        }
+
+        .logo {
+            margin: 0;
+            color: white;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        .logo span {
+            color: var(--light-purple);
+        }
+
+        .nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .nav a {
+            font-size: 8px;
+        }
+
+        /* Three-column layout */
+
+        .layout {
+            display: grid;
+            grid-template-columns: 180px minmax(0, 1fr) 180px;
+            gap: 10px;
+            align-items: stretch;
+        }
+
+        aside,
+        main {
+            min-width: 0;
+            padding: 14px;
+            background: var(--panel);
+            border: 2px solid var(--purple);
+        }
+
+        .section-title {
+            margin: 0 0 12px;
+            padding-bottom: 6px;
+            color: var(--light-purple);
+            font-size: 10px;
+            border-bottom: 1px solid var(--purple);
+        }
+
+        .sidebar-section {
+            margin-bottom: 22px;
+        }
+
+        .sidebar-section:last-child {
+            margin-bottom: 0;
+        }
+
+        .sidebar-links {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .sidebar-links a::before {
+            content: "> ";
+            color: var(--light-purple);
+        }
+
+        .small-note {
+            color: var(--muted);
+            font-size: 8px;
+        }
+
+        /* Main intro */
+
+        .hero {
+            padding: 16px;
+            margin-bottom: 14px;
+            background: #170d20;
+            border: 2px solid var(--purple);
+        }
+
+        .eyebrow {
+            color: var(--light-purple);
+            font-size: 7px;
+        }
+
+        .hero h2 {
+            margin: 12px 0;
+            color: white;
+            font-size: 15px;
+            line-height: 1.8;
+        }
+
+        .hero p {
+            color: var(--muted);
+        }
+
+        .pixel-button {
+            display: inline-block;
+            margin-top: 8px;
+            padding: 7px 10px;
+            background: var(--purple);
+            border: 1px solid var(--light-purple);
+            color: white;
+            font-size: 8px;
+            text-decoration: none;
+        }
+
+        .pixel-button:hover {
+            background: #8554a8;
+            color: white;
+        }
+
+        /* Featured game */
+
+        .featured-game {
+            overflow: hidden;
+            margin-bottom: 14px;
+            background: #170d20;
+            border: 2px solid var(--purple);
+        }
+
+        .featured-cover {
+            display: block;
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+            image-rendering: pixelated;
+            background: var(--background);
+            border-bottom: 1px solid var(--purple);
+        }
+
+        .game-info {
+            padding: 12px;
+        }
+
+        .game-info h3 {
+            margin: 0 0 8px;
+            color: var(--light-purple);
+            font-size: 10px;
+        }
+
+        .game-info p {
+            color: var(--muted);
+        }
+
+        .game-label {
+            display: inline-block;
+            padding: 3px 6px;
+            margin-bottom: 8px;
+            color: var(--light-purple);
+            background: #190d20;
+            border: 1px solid var(--purple);
+            font-size: 7px;
+        }
+
+        /* Other game cards */
+
+        .games-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 10px;
+        }
+
+        .game-card {
+            min-width: 0;
+            padding: 12px;
+            background: #170d20;
+            border: 2px solid var(--purple);
+        }
+
+        .game-card h3 {
+            margin: 0 0 8px;
+            color: var(--light-purple);
+            font-size: 9px;
+        }
+
+        .game-card p {
+            color: var(--muted);
+            font-size: 8px;
+        }
+
+        .game-card img {
+            display: block;
+            width: 100%;
+            height: auto;
+            max-height: 140px;
+            margin-bottom: 10px;
+            object-fit: contain;
+            image-rendering: pixelated;
+            background: var(--background);
+            border: 1px solid var(--purple);
+        }
+
+        /* Updates */
+
+        .update {
+            padding: 8px 0;
+            border-bottom: 1px solid var(--purple);
+        }
+
+        .update:last-child {
+            border-bottom: none;
+        }
+
+        .update-date {
+            display: block;
+            color: var(--light-purple);
+            font-size: 7px;
+        }
+
+        .update p {
+            margin: 5px 0 0;
+            color: var(--muted);
+            font-size: 8px;
+        }
+
+        /* Footer */
+
+        .footer {
+            margin-top: 10px;
+            padding: 10px;
+            text-align: center;
+            color: var(--muted);
+            background: var(--panel);
+            border: 2px solid var(--purple);
+            font-size: 8px;
+        }
+
+        /* Mobile layout */
+
+        @media (max-width: 750px) {
+            .layout {
+                grid-template-columns: minmax(0, 1fr);
+            }
+
+            .games-grid {
+                grid-template-columns: minmax(0, 1fr);
+            }
+
+            .header {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .site-wrap {
+                width: 94%;
+                margin: 12px auto;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="site-wrap">
+
+        <header class="header">
+            <h1 class="logo">BUDD<span>WARE</span></h1>
+
+            <nav class="nav">
+                <a href="index.html">HOME</a>
+                <a href="#games">GAMES</a>
+                <a href="#updates">UPDATES</a>
+                <a href="inspirations.html">INSPIRATIONS</a>
+                <a href="#about">ABOUT</a>
+            </nav>
+        </header>
+
+        <div class="layout">
+
+            <!-- LEFT SIDEBAR -->
+            <aside>
+                <section class="sidebar-section">
+                    <h2 class="section-title">MENU</h2>
+
+                    <div class="sidebar-links">
+                        <a href="index.html">Home</a>
+                        <a href="#games">My Games</a>
+                        <a href="#updates">Updates</a>
+                        <a href="#about">About Buddware</a>
+                    </div>
+                </section>
+
+                <section class="sidebar-section">
+                    <h2 class="section-title">LINKS</h2>
+
+                    <div class="sidebar-links">
+                        <a href="https://www.youtube.com/channel/UCpVhI_BzkDH7aPQrAbRo_Bg"
+                           target="_blank" rel="noopener noreferrer">YouTube</a>
+
+                        <a href="https://buddware.itch.io/"
+                           target="_blank" rel="noopener noreferrer">itch.io</a>
+                    </div>
+                </section>
+
+                <section class="sidebar-section">
+                    <h2 class="section-title">STATUS</h2>
+                    <p class="small-note">Making games, one bug at a time.</p>
+                </section>
+            </aside>
+
+            <!-- MAIN CONTENT -->
+            <main>
+                <section class="hero">
+                    <div class="eyebrow">INDEPENDENT GAME DEVELOPER</div>
+
+                    <h2>GAMES MADE WITH A LITTLE CHAOS.</h2>
+
+                    <p>
+                        Welcome to Buddware. I make strange, fun, and sometimes
+                        spooky games. Take a look around.
+                    </p>
+
+                    <a class="pixel-button" href="#games">EXPLORE THE GAMES</a>
+                </section>
+
+                <section id="games">
+                    <h2 class="section-title">FEATURED GAME</h2>
+
+                    <article class="featured-game">
+                        <a href="unseen.html">
+                            <img
+                                class="featured-cover"
+                                src="unseen-cover.png"
+                                alt="Unseen Massacure game cover"
+                                onerror="this.style.display='none'">
+                        </a>
+
+                        <div class="game-info">
+                            <span class="game-label">IN DEVELOPMENT</span>
+
+                            <h3>UNSEEN MASSACURE</h3>
+
+                            <p>
+                                Something is wrong in Ashwood. Explore a town
+                                full of secrets in this retro horror game.
+                            </p>
+
+                            <a class="pixel-button" href="unseen.html">
+                                VIEW GAME
+                            </a>
+                        </div>
+                    </article>
+
+                    <h2 class="section-title">MORE GAMES</h2>
+
+                    <div class="games-grid">
+                        <article class="game-card">
+                            <img
+                                src="cooltext517979747525084.gif"
+                                alt="PONGO game artwork"
+                                onerror="this.style.display='none'">
+
+                            <h3>PONGO!!!</h3>
+
+                            <p>
+                                A classic paddle-and-ball game with a
+                                simple arcade feel.
+                            </p>
+
+                            <a href="https://buddware.itch.io/"
+                               target="_blank" rel="noopener noreferrer">
+                                PLAY ON ITCH.IO &gt;
+                            </a>
+                        </article>
+
+                        <article class="game-card">
+                            <h3>MORE SOON...</h3>
+
+                            <p>
+                                New projects are in the works.
+                                Check back for updates.
+                            </p>
+                        </article>
+                    </div>
+                </section>
+
+                <section id="about" style="margin-top: 20px;">
+                    <h2 class="section-title">ABOUT BUDDWARE</h2>
+
+                    <p class="small-note">
+                        Buddware is an indie game studio making original
+                        games and experiments. Thanks for checking out
+                        the site!
+                    </p>
+                </section>
+            </main>
+
+            <!-- RIGHT SIDEBAR -->
+            <aside id="updates">
+                <section class="sidebar-section">
+                    <h2 class="section-title">LATEST UPDATES</h2>
+
+                    <div class="update">
+                        <span class="update-date">LATEST</span>
+                        <p>Working on Buddware's games and website.</p>
+                    </div>
+
+                    <div class="update">
+                        <span class="update-date">PROJECT</span>
+                        <p>Unseen Massacure is in development.</p>
+                    </div>
+
+                    <div class="update">
+                        <span class="update-date">GAME</span>
+                        <p>PONGO!!! is available on itch.io.</p>
+                    </div>
+                </section>
+
+                <section class="sidebar-section">
+                    <h2 class="section-title">FOLLOW</h2>
+
+                    <p class="small-note">
+                        Check out the YouTube channel for videos and
+                        game-development updates.
+                    </p>
+
+                    <a class="pixel-button"
+                       href="https://www.youtube.com/channel/UCpVhI_BzkDH7aPQrAbRo_Bg"
+                       target="_blank" rel="noopener noreferrer">
+                        YOUTUBE
+                    </a>
+                </section>
+            </aside>
+
+        </div>
+
+        <footer class="footer">
+            BUDDWARE — MADE BY AN INDIE DEVELOPER
+        </footer>
+
+    </div>
+</body>
+</html>
